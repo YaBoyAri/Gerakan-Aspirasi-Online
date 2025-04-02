@@ -1,0 +1,11 @@
+.home .text{
+    color: #030303;
+}
+
+.home .border-angular{
+    background-color: #FBBF6A;
+}
+
+.home .border-angular:hover{
+    background-color: #ccc6c6;
+}

@@ -1,0 +1,16 @@
+info :
+1. font yg dipakai
+- cinzel dan cinzel_decorative (untuk navbar dan nama kabinet)
+- gotham sebagai font default nya
+
+2. color yg digunakan
+- #4A0000 (primary)
+- #FBBF6A (secondary)
+
+3. warna khusus font
+- paragraf : #636363
+- judul : #030303
+
+4. ukuran font
+- paragraf : 25 
+- dan sisanya sesuaikan
