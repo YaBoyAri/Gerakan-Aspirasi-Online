@@ -1,21 +1,18 @@
-import React from 'react'
+import React from "react";
 import './App.css'
-import Navbar from "./Component/Navbar";
-import Home from "./Component/Home";
-import About from "./Component/About";
-import Footer from "./Component/Footer"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LaporanPage from "./pages/LaporanPage";
 
 const App = () => {
   return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:p-0 p-0">
-      <div className="max-w-7xl w-full ">
-        <Navbar/>
-        <Home/>
-        <About/>
-        <Footer/>
-      </div>
-    </main>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/laporan" element={<LaporanPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
