@@ -51,8 +51,6 @@ function Laporan() {
       .then((response) => {
         alert(response.message);
         setFormData({
-          Nama: "",
-          Jurusan: "",
           judul_aspirasi: "",
           nama_kebijakan: "",
           isi_aspirasi: "",
@@ -89,8 +87,6 @@ function Laporan() {
         }}
       >
         {[
-          { label: "Nama", name: "Nama", type: "text" },
-          { label: "Jurusan / Prodi", name: "Jurusan", type: "text" },
           { label: "Judul Aspirasi", name: "judul_aspirasi", type: "text" },
           { label: "Nama Dosen", name: "nama_kebijakan", type: "text" },
         ].map(({ label, name, type }) => (
