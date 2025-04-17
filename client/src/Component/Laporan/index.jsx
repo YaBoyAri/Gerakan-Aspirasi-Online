@@ -4,8 +4,6 @@ import "./style.css";
 function Laporan() {
   const [laporan, setLaporan] = useState([]);
   const [formData, setFormData] = useState({
-    Nama: "",
-    Jurusan: "",
     judul_aspirasi: "",
     nama_kebijakan: "",
     isi_aspirasi: "",
@@ -35,8 +33,6 @@ function Laporan() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const submissionData = new FormData();
-    submissionData.append("Nama", formData.Nama);
-    submissionData.append("Jurusan", formData.Jurusan);
     submissionData.append("judul_aspirasi", formData.judul_aspirasi);
     submissionData.append("nama_kebijakan", formData.nama_kebijakan);
     submissionData.append("isi_aspirasi", formData.isi_aspirasi);

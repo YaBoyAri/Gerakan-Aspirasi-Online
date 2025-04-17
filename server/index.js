@@ -56,8 +56,6 @@ app.get("/kebijakan_kampus", (req, res) => {
 app.post("/kebijakan_kampus", upload.single("data_pendukung"), (req, res) => {
   // req.body berisi field teks, req.file berisi informasi file yang diupload
   const {
-    Nama,
-    Jurusan,
     judul_aspirasi,
     nama_kebijakan,
     isi_aspirasi,
@@ -65,12 +63,10 @@ app.post("/kebijakan_kampus", upload.single("data_pendukung"), (req, res) => {
   } = req.body;
   const dataPendukung = req.file ? req.file.filename : "";
   const sql =
-    "INSERT INTO kebijakan_kampus (Nama, Jurusan, judul_aspirasi, nama_kebijakan, isi_aspirasi, data_pendukung, proses) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO kebijakan_kampus (judul_aspirasi, nama_kebijakan, isi_aspirasi, data_pendukung, proses) VALUES (?, ?, ?, ?, ?)";
   db.query(
     sql,
     [
-      Nama,
-      Jurusan,
       judul_aspirasi,
       nama_kebijakan,
       isi_aspirasi,
