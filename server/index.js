@@ -80,6 +80,34 @@ app.post("/kebijakan_kampus", upload.single("data_pendukung"), (req, res) => {
   );
 });
 
+// GET semua pengajuan seminar
+app.get("/pengajuan_seminar", (req, res) => {
+  const sql = "SELECT * FROM pengajuan_seminar";
+  db.query(sql, (err, results) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(results);
+  });
+});
+
+// POST pengajuan seminar baru
+app.post("/pengajuan_seminar", (req, res) => {
+  const { Jurusan, Judul_Seminar, Deskripsi_Seminar, proses } = req.body;
+
+  // Validasi minimal
+  if (!Jurusan || !Judul_Seminar || !Deskripsi_Seminar) {
+    return res.status(400).json({ message: "Data tidak lengkap." });
+  }
+
+  const sql = `
+    INSERT INTO pengajuan_seminar (Jurusan, Judul_Seminar, Deskripsi_Seminar, proses)
+    VALUES (?, ?, ?, ?)
+  `;
+  db.query(sql, [Jurusan, Judul_Seminar, Deskripsi_Seminar, proses || 0], (err, result) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json({ message: "Pengajuan seminar berhasil disimpan!" });
+  });
+});
+
 const port = 5000;
 app.listen(port, () => {
   console.log(`Server backend berjalan di port ${port}`);

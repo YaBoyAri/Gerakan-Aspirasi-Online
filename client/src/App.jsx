@@ -1,8 +1,10 @@
 import React from "react";
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import LaporanPage from "./pages/LaporanPage";
+import HomePage from "./Pages/HomePage";
+import LaporanPage from "./Pages/LaporanPage";
+import LaporanPengajuanSeminarPage from "./Pages/LaporanPengajuanSeminarPage";
+import LaporanKinerjaDosenPage from "./Pages/LaporanKinerjaDosenPage";
 
 const App = () => {
   return (
@@ -10,6 +12,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/laporan" element={<LaporanPage />} />
+        <Route path="/laporan-pengajuan-seminar" element={<LaporanPengajuanSeminarPage />} />
+        <Route path="/laporan-kinerja-dosen" element={<LaporanKinerjaDosenPage />} />
       </Routes>
     </Router>
   );
