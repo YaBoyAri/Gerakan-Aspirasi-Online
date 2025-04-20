@@ -19,7 +19,7 @@ const Home = () => {
             lingkungan yang lebih baik bagi Fasilkom UNSRI.
           </p>
           <button
-            onClick={() => navigate("/laporan")}
+            onClick={() => navigate("/laporan-kebijakan-kampus")}
             className="inline-block mt-4 rounded-sm border-angular duration-300 ease-in-out px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-black"
           >
             Laporkan!

@@ -21,6 +21,8 @@ const upload = multer({ storage: storage });
 
 // Middleware
 app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Tidak perlu express.json() untuk route multipart/form-data
 
 // Menyajikan file statis dari folder uploads
@@ -80,31 +82,62 @@ app.post("/kebijakan_kampus", upload.single("data_pendukung"), (req, res) => {
   );
 });
 
-// GET semua pengajuan seminar
+// Endpoint GET untuk menampilkan semua pengajuan seminar
 app.get("/pengajuan_seminar", (req, res) => {
   const sql = "SELECT * FROM pengajuan_seminar";
-  db.query(sql, (err, results) => {
-    if (err) return res.status(500).json({ error: err });
-    res.json(results);
+  db.query(sql, (err, result) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(result);
   });
 });
 
-// POST pengajuan seminar baru
+// Endpoint POST untuk mengirim pengajuan seminar
 app.post("/pengajuan_seminar", (req, res) => {
   const { Jurusan, Judul_Seminar, Deskripsi_Seminar, proses } = req.body;
 
-  // Validasi minimal
   if (!Jurusan || !Judul_Seminar || !Deskripsi_Seminar) {
-    return res.status(400).json({ message: "Data tidak lengkap." });
+    return res.status(400).json({ message: "Data tidak lengkap" });
   }
 
   const sql = `
     INSERT INTO pengajuan_seminar (Jurusan, Judul_Seminar, Deskripsi_Seminar, proses)
     VALUES (?, ?, ?, ?)
   `;
-  db.query(sql, [Jurusan, Judul_Seminar, Deskripsi_Seminar, proses || 0], (err, result) => {
-    if (err) return res.status(500).json({ error: err });
-    res.json({ message: "Pengajuan seminar berhasil disimpan!" });
+  const values = [Jurusan, Judul_Seminar, Deskripsi_Seminar, proses];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Insert error:", err);
+      return res.status(500).json({ message: "Gagal mengirim data" });
+    }
+    res.json({ message: "Pengajuan seminar berhasil dikirim" });
+  });
+});
+
+app.post("/kerusakan_fasilitas", upload.single("berkas"), (req, res) => {
+  const { fasilitas_yang_rusak, deskripsi_kerusakan, proses } = req.body;
+  const berkas = req.file ? req.file.filename : null;
+
+  console.log("Received form data:", req.body);
+  console.log("Received file:", req.file);
+
+  const sql = "INSERT INTO kerusakan_fasilitas (fasilitas_yang_rusak, deskripsi_kerusakan, proses, berkas) VALUES (?, ?, ?, ?)";
+  const values = [fasilitas_yang_rusak, deskripsi_kerusakan, proses, berkas];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      console.error("Query error:", err);
+      return res.status(500).json({ error: err.message });
+    }
+    res.json({ message: "Laporan berhasil dikirim" });
+  });
+});
+
+app.get("/kerusakan_fasilitas", (req, res) => {
+  const sql = "SELECT * FROM kerusakan_fasilitas ORDER BY id DESC";
+  db.query(sql, (err, result) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(result);
   });
 });
 

@@ -27,15 +27,13 @@ function LaporanPengajuanSeminar() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const submissionData = new FormData();
-    submissionData.append("Jurusan", formData.Jurusan);
-    submissionData.append("Judul_Seminar", formData.Judul_Seminar);
-    submissionData.append("Deskripsi_Seminar", formData.Deskripsi_Seminar);
-    submissionData.append("proses", formData.proses);
-
+  
     fetch("http://localhost:5000/pengajuan_seminar", {
       method: "POST",
-      body: submissionData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData), // langsung kirim sebagai JSON
     })
       .then((res) => res.json())
       .then((response) => {
@@ -52,6 +50,8 @@ function LaporanPengajuanSeminar() {
       .then((data) => setLaporan(data))
       .catch((err) => console.error(err));
   };
+  
+  
 
   return (
     <div style={{ padding: "40px 20px", textAlign: "center" }}>
