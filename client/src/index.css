@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "Cinzel Decorative";
+    src: url("/Cinzel,Cinzel_Decorative,Patrick_Hand_SC,Poppins/Cinzel_Decorative/CinzelDecorative-Bold.ttf")
+      format("truetype");
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Cinzel";
+    src: url("/Cinzel,Cinzel_Decorative,Patrick_Hand_SC,Poppins/Cinzel/static/Cinzel-Bold.ttf")
+      format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  
+  @font-face {
+    font-family: "Gotham Bold";
+    src: url("/Gotham Font Family/Gotham-font-family/Gotham/Gotham-Bold.otf")
+      format("opentype");
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Gotham Book";
+    src: url("/Gotham Font Family/Gotham-font-family/Gotham/Gotham-Book.otf")
+      format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Gotham Medium";
+    src: url("/Gotham Font Family/Gotham-font-family/Gotham/Gotham-Medium.otf")
+      format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
