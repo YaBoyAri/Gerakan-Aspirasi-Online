@@ -2,6 +2,7 @@ import React from "react";
 import icon1 from "../../assets/icon/A.png";
 import icon2 from "../../assets/icon/B.png";
 import icon3 from "../../assets/icon/C.png";
+import icon4 from "../../assets/icon/handshake.png"
 import CardAbout from "../Card_About";
 
 const cardlist = [
@@ -16,7 +17,7 @@ const cardlist = [
     text: "Setiap laporan yang masuk akan dikaji dan diteruskan ke pihak terkait untuk ditindaklanjuti",
   },
   {
-    image: icon3,
+    image: icon4,
     tittle: "Kolaborasi Mahasiswa",
     text: "Bersama-sama wujudkan perubahan dengan aspirasi yang didukung banyak mahasiswa",
   },

@@ -128,6 +128,83 @@ app.get("/kerusakan_fasilitas", (req, res) => {
   });
 });
 
+// GET semua data kinerja dosen
+app.get("/kinerja_dosen", (req, res) => {
+  const sql = "SELECT * FROM kinerja_dosen";
+  db.query(sql, (err, results) => {
+    if (err) {
+      console.error("Error saat mengambil data:", err);
+      return res.status(500).json({ error: "Gagal mengambil data" });
+    }
+    res.json(results);
+  });
+});
+
+// POST untuk menambahkan data aspirasi kinerja dosen
+app.post("/kinerja_dosen", (req, res) => {
+  const {
+    Subjek_Aspirasi,
+    Target_Aspirasi,
+    Jurusan_Dosen,
+    Matakuliah_Dosen,
+    Isi_Aspirasi,
+  } = req.body;
+
+  const sql = `
+    INSERT INTO kinerja_dosen 
+    (Subjek_Aspirasi, Target_Aspirasi, Jurusan_Dosen, Matakuliah_Dosen, Isi_Aspirasi)
+    VALUES (?, ?, ?, ?, ?)
+  `;
+
+  db.query(
+    sql,
+    [
+      Subjek_Aspirasi,
+      Target_Aspirasi,
+      Jurusan_Dosen,
+      Matakuliah_Dosen,
+      Isi_Aspirasi,
+    ],
+    (err, result) => {
+      if (err) {
+        console.error("Error saat menyimpan data:", err);
+        return res.status(500).json({ error: "Gagal menyimpan data" });
+      }
+      res.json({ message: "Aspirasi berhasil dikirim!" });
+    }
+  );
+});
+
+// Endpoint untuk halaman admin: menggabungkan semua laporan
+app.get("/admin/laporan", async (req, res) => {
+  try {
+    const queries = [
+      "SELECT 'Kebijakan Kampus' AS kategori, id, judul_aspirasi AS judul, isi_aspirasi AS isi, proses, data_pendukung AS lampiran FROM kebijakan_kampus",
+      "SELECT 'Pengajuan Seminar' AS kategori, id, Judul_Seminar AS judul, Deskripsi_Seminar AS isi, proses, NULL AS lampiran FROM pengajuan_seminar",
+      "SELECT 'Kerusakan Fasilitas' AS kategori, id, fasilitas_yang_rusak AS judul, deskripsi_kerusakan AS isi, proses, berkas AS lampiran FROM kerusakan_fasilitas",
+      "SELECT 'Kinerja Dosen' AS kategori, id, Subjek_Aspirasi AS judul, Isi_Aspirasi AS isi, '' AS proses, NULL AS lampiran FROM kinerja_dosen"
+    ];
+
+    const combinedResults = [];
+
+    for (const query of queries) {
+      const result = await new Promise((resolve, reject) => {
+        db.query(query, (err, data) => {
+          if (err) reject(err);
+          else resolve(data);
+        });
+      });
+
+      combinedResults.push(...result);
+    }
+
+    res.json(combinedResults);
+  } catch (err) {
+    console.error("Gagal mengambil data laporan:", err);
+    res.status(500).json({ error: "Gagal mengambil data laporan admin" });
+  }
+});
+
 // Jalankan server
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
