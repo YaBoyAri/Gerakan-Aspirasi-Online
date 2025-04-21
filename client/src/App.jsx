@@ -6,6 +6,7 @@ import LaporanPengajuanSeminarPage from "./Pages/LaporanPengajuanSeminarPage";
 import LaporanKinerjaDosenPage from "./Pages/LaporanKinerjaDosenPage";
 import LaporanKerusakanFasilitasPage from "./Pages/LaporanKerusakanFasilitasPage";
 import LaporanKebijakanKampusPage from "./Pages/LaporanKebijakanKampusPage";
+import AdminPage from "./Pages/AdminPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/laporan-kinerja-dosen" element={<LaporanKinerjaDosenPage />} />
         <Route path="/laporan-kerusakan-fasilitas" element={<LaporanKerusakanFasilitasPage />} />
         <Route path="/laporan-kebijakan-kampus" element={<LaporanKebijakanKampusPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
     </Router>
   );
