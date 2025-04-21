@@ -1,5 +1,5 @@
+// src/components/Footer.js
 import React from "react";
-import logo from "../../assets/Logo/Logo-BEM.png"
 import styles from "./components.module.css";
 
 const Footer = () => {
@@ -9,7 +9,7 @@ const Footer = () => {
         <div className={styles.footerInfo}>
           <div className={styles.footerLogo}>
             <img
-              src={logo}
+              src="../public/Logo-BEM.png"
               alt="Logo"
               className={styles.footerLogoImage}
             />
@@ -37,7 +37,23 @@ const Footer = () => {
           <p>Email: bemfasilkomunsri@gmail.com</p>
           <p>Instagram: @bemilkomunsri</p>
         </div>
-        
+        <div className={styles.footerNav}>
+          <h3>Navigation</h3>
+          <ul>
+            <li>
+              <a href="/">Home</a>
+            </li>
+            <li>
+              <a href="#">About Us</a>
+            </li>
+            <li>
+              <a href="#">Profile</a>
+            </li>
+            <li>
+              <a href="#">BEM Apps</a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className={styles.footerBottom}>
         <p>&copy; BEM KM FASILKOM UNSRI 2025 | Kabinet Artha Darma</p>

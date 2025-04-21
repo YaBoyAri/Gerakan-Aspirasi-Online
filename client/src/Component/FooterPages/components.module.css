@@ -49,7 +49,16 @@
   padding: 0;
 }
 
+.navbarLink {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s ease;
+}
 
+.navbarLink:hover {
+  font-family: "Gotham Medium", cursive;
+  color: #4a0000;
+}
 
 /* Footer */
 .footer {

@@ -12,7 +12,7 @@ const Admin = () => {
   }, []);
 
   return (
-    <div className="p-6">
+    <div className="pt-16">
       <h1 className="text-2xl font-bold mb-4">Semua Laporan Mahasiswa</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full table-auto border border-gray-300">
