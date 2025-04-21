@@ -1,21 +1,22 @@
 import React from "react";
-import icon from "../../assets/icon/image.png";
-import handshake from "../../assets/icon/handshake.png";
+import icon1 from "../../assets/icon/A.png";
+import icon2 from "../../assets/icon/B.png";
+import icon3 from "../../assets/icon/C.png";
 import CardAbout from "../Card_About";
 
 const cardlist = [
   {
-    image: icon,
+    image: icon2,
     tittle: "Laporan Kampus",
     text: "Tempat mahasiswa menyampaikan keluhan dan saran seputar kampus dengan mudah",
   },
   {
-    image: icon,
+    image: icon1,
     tittle: "Tindak Lanjut Aduan",
     text: "Setiap laporan yang masuk akan dikaji dan diteruskan ke pihak terkait untuk ditindaklanjuti",
   },
   {
-    image: handshake,
+    image: icon3,
     tittle: "Kolaborasi Mahasiswa",
     text: "Bersama-sama wujudkan perubahan dengan aspirasi yang didukung banyak mahasiswa",
   },

@@ -1,6 +1,7 @@
 import Navbar from "../Component/Navbar";
 import Home from "../Component/Home";
 import About from "../Component/About";
+import Laporan from "../Component/Laporan"
 import Footer from "../Component/Footer";
 
 const HomePage = () => {
@@ -10,6 +11,7 @@ const HomePage = () => {
         <Navbar />
         <Home />
         <About />
+        <Laporan />
         <Footer />
       </div>
     </main>
