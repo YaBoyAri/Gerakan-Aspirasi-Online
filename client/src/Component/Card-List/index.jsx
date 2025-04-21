@@ -1,7 +1,6 @@
-import React from "react";
+import React, {useRef,useEffect} from "react";
 import icon1 from "../../assets/icon/A.png";
 import icon2 from "../../assets/icon/B.png";
-import icon3 from "../../assets/icon/C.png";
 import icon4 from "../../assets/icon/handshake.png"
 import CardAbout from "../Card_About";
 
@@ -24,6 +23,8 @@ const cardlist = [
 ];
 
 const CardList = () => {
+
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-center">
       {cardlist.map((cert, index) => (

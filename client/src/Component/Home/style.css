@@ -1,11 +1,23 @@
-.home .text{
-    color: #030303;
+.home .text {
+  color: #030303;
 }
 
-.home .border-angular{
-    background-color: #FBBF6A;
+.home .border-angular {
+  background-color: #fbbf6a;
 }
 
-.home .border-angular:hover{
-    background-color: #ccc6c6;
+.home .border-angular:hover {
+  background-color: #ccc6c6;
 }
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(-40px);
+    transition: all 0.6s ease-in-out;
+  }
+  
+  .fade-up-animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  

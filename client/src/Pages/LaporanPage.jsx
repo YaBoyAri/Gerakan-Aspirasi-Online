@@ -1,14 +1,14 @@
 import React from "react";
-import LaporanPengajuanSeminar from "../Component/LaporanPengajuanSeminar";
+import LaporanLangsung from "../Component/LaporanLangsung";
 
-const LaporanPengajuanSeminarPage = () => {
+const LaporanPage = () => {
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:p-0 p-0">
       <div className="max-w-7xl w-full">
-        <LaporanPengajuanSeminar />
+        <LaporanLangsung />
       </div>
     </main>
   );
 };
 
-export default LaporanPengajuanSeminarPage;
+export default LaporanPage;
