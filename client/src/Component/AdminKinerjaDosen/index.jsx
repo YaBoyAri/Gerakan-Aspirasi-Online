@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const KinerjaDosenList = () => {
+const AdminKinerjaDosen = () => {
   const [laporan, setLaporan] = useState([]);
   const navigate = useNavigate();
 
@@ -77,4 +77,4 @@ const KinerjaDosenList = () => {
   );
 };
 
-export default KinerjaDosenList;
+export default AdminKinerjaDosen;
