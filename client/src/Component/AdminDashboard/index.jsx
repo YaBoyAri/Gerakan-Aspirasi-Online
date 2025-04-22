@@ -23,7 +23,7 @@ const Admin = () => {
         axios.get('http://localhost:5000/ormawa'),
         axios.get('http://localhost:5000/kerusakan_fasilitas'),
         axios.get('http://localhost:5000/kebijakan_kampus'),
-        axios.get('https://localhost:5000/pengajuan_seminar')
+        axios.get('http://localhost:5000/pengajuan_seminar')
       ]);
 
       setData({
