@@ -34,14 +34,14 @@ const Home = () => {
 
   return (
     <Element name="home">
-      <section className="pt-40 home">
-        <div className="lg:flex">
+      <section className="lg:pt-32 pt-72  home flex items-center justify-center min-h-screen">
+        <div className="lg:flex justify-center self-center">
           <div ref={titleRef} className="lg:ml-20 fade-up mx-6 self-center">
             <h1 className="text lg:text-5xl text-4xl font-medium">
               Sampaikan Pelaporanmu
             </h1>
             <h1 className="text  mt-2 lg:text-5xl text-4xl font-medium">
-              Bersama Gaspol
+              Bersama GASPOL
             </h1>
             <p className=" max-w-[36rem] md:text-base text-sm mt-8">
               Jangan biarkan keluhan dan aspirasi Anda hanya menjadi suara tanpa
