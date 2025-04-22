@@ -1,55 +1,80 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Admin = () => {
-  const [laporan, setLaporan] = useState([]);
+  const [data, setData] = useState({
+    kinerja: 0,
+    ormawa: 0,
+    fasilitas: 0,
+    kebijakan: 0,
+  });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/admin/laporan")
-      .then((res) => setLaporan(res.data))
-      .catch((err) => console.error("Error:", err));
+    fetchCounts();
   }, []);
 
+  const fetchCounts = async () => {
+    try {
+      const [res1, res2, res3, res4] = await Promise.all([
+        axios.get('http://localhost:5000/kinerja_dosen'),
+        axios.get('http://localhost:5000/aspirasi_ormawa'),
+        axios.get('http://localhost:5000/kerusakan_fasilitas'),
+        axios.get('http://localhost:5000/kebijakan_kampus'),
+      ]);
+
+      setData({
+        kinerja: res1.data.length,
+        ormawa: res2.data.length,
+        fasilitas: res3.data.length,
+        kebijakan: res4.data.length,
+      });
+    } catch (err) {
+      console.error('Gagal mengambil data dashboard', err);
+    }
+  };
+
+  const Card = ({ title, count, color, link }) => (
+    <div
+      className={`rounded-xl p-4 w-full md:w-[230px] text-white shadow cursor-pointer transition hover:scale-105 ${color}`}
+      onClick={() => navigate(link)}
+    >
+      <h2 className="text-sm font-semibold uppercase">{title}</h2>
+      <p className="text-3xl font-bold">{count}</p>
+      <p className="underline text-sm mt-2">Lihat Detail</p>
+    </div>
+  );
+
   return (
-    <div className="pt-16">
-      <h1 className="text-2xl font-bold mb-4">Semua Laporan Mahasiswa</h1>
-      <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border border-gray-300">
-          <thead className="bg-gray-100">
-            <tr>
-              <th className="border px-4 py-2">Kategori</th>
-              <th className="border px-4 py-2">Judul</th>
-              <th className="border px-4 py-2">Isi</th>
-              <th className="border px-4 py-2">Proses</th>
-              <th className="border px-4 py-2">Lampiran</th>
-            </tr>
-          </thead>
-          <tbody>
-            {laporan.map((item, index) => (
-              <tr key={index}>
-                <td className="border px-4 py-2">{item.kategori}</td>
-                <td className="border px-4 py-2">{item.judul}</td>
-                <td className="border px-4 py-2">{item.isi}</td>
-                <td className="border px-4 py-2">{item.proses || "-"}</td>
-                <td className="border px-4 py-2">
-                  {item.lampiran ? (
-                    <a
-                      href={`http://localhost:5000/uploads/${item.lampiran}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-500 underline"
-                    >
-                      Lihat File
-                    </a>
-                  ) : (
-                    "-"
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6">Dashboard Admin GASPOL</h1>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <Card
+          title="Kinerja Dosen"
+          count={data.kinerja}
+          color="bg-cyan-500"
+          link="/admin/kinerja-dosen"
+        />
+        <Card
+          title="Aspirasi Ormawa"
+          count={data.ormawa}
+          color="bg-green-600"
+          link="/admin/aspirasi-ormawa"
+        />
+        <Card
+          title="Kerusakan Fasilitas"
+          count={data.fasilitas}
+          color="bg-red-600"
+          link="/admin/kerusakan-fasilitas"
+        />
+        <Card
+          title="Kebijakan Kampus"
+          count={data.kebijakan}
+          color="bg-yellow-500"
+          link="/admin/kebijakan-kampus"
+        />
       </div>
     </div>
   );
