@@ -9,6 +9,7 @@ import LaporanKebijakanKampusPage from "./Pages/LaporanKebijakanKampusPage";
 import AdminPage from "./Pages/AdminPage";
 import NavbarPages from "./Component/NavbarPages";
 import LaporanPage from "./Pages/LaporanPage";
+import LaporanOrmawaPage from "./Pages/LaporanOrmawaPage";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/laporan-kinerja-dosen" element={<LaporanKinerjaDosenPage />} />
         <Route path="/laporan-kerusakan-fasilitas" element={<LaporanKerusakanFasilitasPage />} />
         <Route path="/laporan-kebijakan-kampus" element={<LaporanKebijakanKampusPage />} />
+        <Route path="/laporan-ormawa" element={<LaporanOrmawaPage />} />
         <Route path="/laporan" element={<LaporanPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>

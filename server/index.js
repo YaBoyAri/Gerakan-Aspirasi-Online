@@ -11,6 +11,7 @@ const kebijakanRoutes = require("./routes/kebijakanRoutes");
 const seminarRoutes = require("./routes/seminarRoutes");
 const fasilitasRoutes = require("./routes/fasilitasRoutes");
 const dosenRoutes = require("./routes/dosenRoutes");
+const ormawaRoutes = require("./routes/ormawaRoutes");
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use("/kebijakan_kampus", kebijakanRoutes);
 app.use("/pengajuan_seminar", seminarRoutes);
 app.use("/kerusakan_fasilitas", fasilitasRoutes);
 app.use("/kinerja_dosen", dosenRoutes);
+app.use("/ormawa", ormawaRoutes);
 
 // Menjalankan server
 const port = process.env.PORT || 5000;
