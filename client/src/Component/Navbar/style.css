@@ -30,6 +30,18 @@
   border-bottom: 1px solid #ffffff;
 }
 
+.gotham{
+  font-family: "gotham", sans-serif;
+}
+
+.cinzel{
+  font-family: "Cinzel Decorative", sans-serif;
+}
+
+.cinzelbae{
+  font-family: "Cinzel", sans-serif;
+}
+
 @media (max-width: 660px) {
   .menunav {
     display: block;
