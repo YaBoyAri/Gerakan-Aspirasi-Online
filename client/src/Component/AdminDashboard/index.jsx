@@ -20,9 +20,10 @@ const Admin = () => {
     try {
       const [res1, res2, res3, res4] = await Promise.all([
         axios.get('http://localhost:5000/kinerja_dosen'),
-        axios.get('http://localhost:5000/aspirasi_ormawa'),
+        axios.get('http://localhost:5000/ormawa'),
         axios.get('http://localhost:5000/kerusakan_fasilitas'),
         axios.get('http://localhost:5000/kebijakan_kampus'),
+        axios.get('https://localhost:5000/pengajuan_seminar')
       ]);
 
       setData({
@@ -74,6 +75,12 @@ const Admin = () => {
           count={data.kebijakan}
           color="bg-yellow-500"
           link="/admin/kebijakan-kampus"
+        />
+        <Card
+          title="Ormawa"
+          count={data.kebijakan}
+          color="bg-gray-500"
+          link="/admin/oramawa"
         />
       </div>
     </div>

@@ -10,6 +10,7 @@ import AdminPage from "./Pages/AdminPage";
 import NavbarPages from "./Component/NavbarPages";
 import LaporanPage from "./Pages/LaporanPage";
 import LaporanOrmawaPage from "./Pages/LaporanOrmawaPage";
+import AdminKinerjaDosenPage from "./Pages/AdminKinerjaDosenPage";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/laporan-ormawa" element={<LaporanOrmawaPage />} />
         <Route path="/laporan" element={<LaporanPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/kinerja-dosen" element={<AdminKinerjaDosenPage />} />
       </Routes>
     </Router>
   );
