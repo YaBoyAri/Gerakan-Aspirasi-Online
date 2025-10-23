@@ -117,7 +117,7 @@
   font-size: 1rem;
 }
 
-.footerContact p,
+.footerContact a,
 .footerInfo p {
   margin-bottom: 8px;
   font-size: 0.875rem;

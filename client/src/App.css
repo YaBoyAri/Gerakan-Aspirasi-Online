@@ -3,6 +3,7 @@
 body{
   background-color: white;
   color: #636363;
+  font-family: "inter", sans-serif;
 }
 
 @font-face {
